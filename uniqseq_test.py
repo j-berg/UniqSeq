@@ -174,4 +174,4 @@ for q in uniqseqs:
         primers[q] = (''.join(for_seq), rc(rev_seq), for_temp) #reversed but not complemented yet
         
 #output random primer sets from dictionary for trial -- include conversions for strand specificity (take reverse complement of reverse primer)
-random.sample(primers.items(), k)
+print(random.sample(primers.items(), k)) #make sure it doesn't output the same twice, output to pandas matrix and export or just print out, either is fine
