@@ -36,9 +36,10 @@ for subdir, dirs, files in os.walk(args.input_species): #walk through raw data f
             pass
         else:
             stri = ""
-            for line in x:
-                if re.match(">",line): #strip out lines starting with ">"
-                    line = next(x)
+            openfilex = open(os.path.join(args.input_species, x)).readlines()
+            for line in openfilex:
+                if line.startswith('>'):
+                    pass
                 else:
                     line = line.rstrip("\n")
                     line = line.rstrip("\t")
@@ -52,9 +53,10 @@ for subdir, dirs, files in os.walk(args.input_other): #walk through raw data fil
             pass
         else:
             stri = ""
-            for line in x:
-                if re.match(">",line): #strip out lines starting with ">"
-                    line = next(x)
+            openfilex = open(os.path.join(args.input_other, x)).readlines()
+            for line in openfilex:
+                if line.startswith('>'):
+                    pass
                 else:
                     line = line.rstrip("\n")
                     line = line.rstrip("\t")
