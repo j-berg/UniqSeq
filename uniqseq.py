@@ -26,8 +26,8 @@ k = args.output_number #get number of primer pairs to output as args input
 
 seq1 = [] #same species, populate from user input
 seq2 = [] #dissimilar, populate from user input
-initseqs = [] #starter library of sequences
-uniqseqs = [] #library of unique sequences
+initseqs = set() #starter library of sequences
+uniqseqs = set() #library of unique sequences
 
 #sequences to compare
 for subdir, dirs, files in os.walk(args.input_species): #walk through raw data files within a given directory (first argument passed into program)
@@ -70,7 +70,7 @@ end = len(m) + 1
 y = window
 x = window - window
 while y != end:
-    initseqs.append(m[x:y])
+    initseqs.add(m[x:y])
     y = y + 1
     x = x + 1
 
@@ -85,7 +85,7 @@ for n in seq1[1:]:
             if n[x:y] in uniqseqs:
                 pass
             else:
-                uniqseqs.append(n[x:y])
+                uniqseqs.add(n[x:y])
         y = y + 1
         x = x + 1
 
@@ -115,6 +115,11 @@ for uniqs in uniqseqs:
 for se in bad_seqs:
     uniqseqs.remove(se)
 
+#for the future
+#make sure that primers aren't found in dissimilar species (implement blast to makes sure they are at least 75% different than anything in the genome of something else)
+
+#report is the primer sequence is found elsewhere in the similar species
+    
 #make primer dictionary
 primers = {} #for and rev primers, key being start_loc, end_loc, and sequence
 
