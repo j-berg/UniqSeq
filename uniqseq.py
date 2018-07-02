@@ -180,7 +180,7 @@ for q in uniqseqs:
         else:
             pass
 
-    loc_temp = 0
+    loc_temp = -5
     rev_seq = []
     for ch in reversed(char):
         rev_seq.append(ch)
